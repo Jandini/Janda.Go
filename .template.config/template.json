@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Matt Janda",
+  "classifications": ["Common/Console/Go"],
+  "name": "Console Go",
+  "generatorVersions": "[1.0.0.0-*)",
+  "description": "dot console application",
+  "groupIdentity": "go",
+  "precedence": "4000",
+  "identity": "Console.Go",
+  "shortName": "congo",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Janda.Go",
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            ".vs/**",
+            ".git/**",
+            "/**/obj/**",
+            ".nuspec"
+          ]
+        }
+      ]
+    }
+  ],
+  "symbols": {
+    "sourceName": {
+      "type": "parameter",
+      "replaces": "Janda.Go"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Janda.Go</id>
+    <version>$Version$</version>
+    <title>Janda Go</title>
+    <authors>Matt Janda</authors>
+    <owners>Matt Janda</owners>
+    <license type="expression">MIT</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>dotnet template janda go</tags>
+    <description>Provides dotnet project templates</description>
+    <projectUrl>https://github.com/Jandini/Janda.Go</projectUrl>
+    <copyright>$copyright$</copyright>
+  </metadata>
+  <files>
+    <file src="src\**\*" target="content\src" exclude="src\**\obj\**;src\**\.vs\**" />
+    <file src=".template.config\template.json" target="content\.template.config\template.json" />
+    <file src="publish.bat" target="content" />
+    <file src=".gitignore" target="content" />
+    <file src="res\.git.bat" target="content" />
+    <file src="res\GitVersion.yml" target="content" />
+    <file src="res\README.md" target="content" />
+    <file src="res\build.yml" target="content\.github\workflows" />
+  </files>
+</package>

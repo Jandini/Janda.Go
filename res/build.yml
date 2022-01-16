@@ -1,4 +1,4 @@
-name: Build
+name: build
 
 env:
     DOTNET_CLI_TELEMETRY_OPTOUT: true
@@ -19,30 +19,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
     - uses: actions/checkout@v2
       with: 
         fetch-depth: 0    
-
     - name: Setup
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x            
-
+        dotnet-version: 6.0.x
     - name: Restore
       run:
         dotnet restore
-
     - name: Build
-      run: dotnet build --no-restore -nologo -c:Release
-
-    - name: Version
-      run: |  
-        dotnet tool install --global GitVersion.Tool --version 5.8.1
-        dotnet gitversion /output buildserver 
-        
-    - name: Pack
-      working-directory: .
-      run: |
-        nuget pack .nuspec -NoDefaultExcludes -OutputDirectory bin -Version ${{ env.GitVersion_SemVer }}
- 
+      run: dotnet build --no-restore -nologo
+    - name: Test
+      run: dotnet test --no-build --verbosity normal

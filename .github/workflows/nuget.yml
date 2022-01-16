@@ -1,0 +1,43 @@
+name: NuGet
+
+on:
+  push:
+     tags: '*'
+
+env:
+    DOTNET_CLI_TELEMETRY_OPTOUT: true
+    NUGET_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+    
+jobs:
+  nuget:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        fetch-depth: 0
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1      
+      with:
+        dotnet-version: 6.0.x
+        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+    
+    - name: Restore
+      working-directory: src
+      run: dotnet restore
+
+    - name: Build
+      working-directory: src
+      run: dotnet build --no-restore -nologo -c:Release
+
+    - name: Version
+      run: |  
+        dotnet tool install --global GitVersion.Tool --version 5.8.1
+        dotnet gitversion /output buildserver 
+        
+    - name: Pack
+      run: nuget pack .nuspec -NoDefaultExcludes -OutputDirectory bin -Version ${{ env.GitVersion_SemVer }}
+ 
+    - name: Push    
+      run: dotnet nuget push "bin/*.nupkg" -k ${{ secrets.PACKAGES_TOKEN }} -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
