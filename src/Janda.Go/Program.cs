@@ -1,13 +1,18 @@
 ﻿using Janda.Go;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Serilog;
-using Serilog.Sinks.SystemConsole.Themes;
+
 
 new ServiceCollection()
-    .AddTransient<IMain, Main>()
-    .AddLogging(builder => builder
-        .AddSerilog(new LoggerConfiguration()
-            .WriteTo.Console(theme: AnsiConsoleTheme.Code, outputTemplate: $"{{Message,-{Console.WindowWidth - 18}:lj}} {{Timestamp:HH:mm:ss}} [ {{Level:u4}} ]{{NewLine}}{{Exception}}")
+    .AddTransient<IMain, Main>()    
+    .AddLogging(builder => builder        
+        .AddSerilog(new LoggerConfiguration()       
+            .ReadFrom.Configuration(
+                new ConfigurationBuilder()                    
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", true)
+                    .Build())
             .CreateLogger(), dispose: true))
     .BuildServiceProvider()
     .GetRequiredService<IMain>()
