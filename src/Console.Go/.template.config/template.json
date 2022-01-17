@@ -13,7 +13,7 @@
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "Janda.Go",
+  "sourceName": "ConGo",
   "preferNameDirectory": true,
   "sources": [
     {
@@ -32,7 +32,7 @@
   "symbols": {
     "sourceName": {
       "type": "parameter",
-      "replaces": "Janda.Go"
+      "replaces": "ConGo"
     }
   }
 }

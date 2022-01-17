@@ -16,13 +16,7 @@ Run dotnet new -i Janda.Go to install the templates.</description>
     <icon>images\icon.png</icon>
   </metadata>
   <files>
-    <file src="src\**\*" target="content\src" exclude="src\**\obj\**;src\**\.vs\**" />
-    <file src=".template.config\template.json" target="content\.template.config\template.json" />
-    <file src="publish.bat" target="content" />
-    <file src=".gitignore" target="content" />
-    <file src="res\.git.bat" target="content" />
-    <file src="res\README.md" target="content" />
-    <file src="res\build.yml" target="content\.github\workflows" />
-    <file src="res\go.png" target="images\icon.png" />
+    <file src="src\**\*" target="content\src" exclude="src\**\obj\**;src\**\.vs\**;src\**\bin\**" />
+    <file src="go.png" target="images\icon.png" />
   </files>
 </package>
