@@ -25,13 +25,11 @@ jobs:
       with:
         dotnet-version: 6.0.x            
 
-    - name: Restore
-      run:
-        dotnet restore
-
     - name: Console.Go
       working-directory: src/Console.Go/src
-      run: dotnet build --no-restore -nologo -c:Release
+      run: |
+        dotnet restore
+	dotnet build --no-restore -nologo -c:Release
 
     - name: Version
       run: |  
