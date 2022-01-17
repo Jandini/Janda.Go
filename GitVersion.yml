@@ -1,7 +1,0 @@
-# use SemVer instead default full informational
-assembly-informational-format: '{SemVer}'
-
-branches:
-  main:
-    # reset tag number after each release
-    prevent-increment-of-merged-branch-version: true

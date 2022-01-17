@@ -9,9 +9,11 @@
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>dotnet template janda go</tags>
-    <description>Provides dotnet project templates</description>
+    <description>Provides startup code for application with dependency injection, logging, configuration and git versioning. 
+Run dotnet new -i Janda.Go to install the templates.</description>
     <projectUrl>https://github.com/Jandini/Janda.Go</projectUrl>
-    <copyright>$copyright$</copyright>
+    <repository type="git" url="https://github.com/Jandini/Janda.Go" />
+    <icon>images\icon.png</icon>
   </metadata>
   <files>
     <file src="src\**\*" target="content\src" exclude="src\**\obj\**;src\**\.vs\**" />
@@ -19,8 +21,8 @@
     <file src="publish.bat" target="content" />
     <file src=".gitignore" target="content" />
     <file src="res\.git.bat" target="content" />
-    <file src="res\GitVersion.yml" target="content" />
     <file src="res\README.md" target="content" />
     <file src="res\build.yml" target="content\.github\workflows" />
+    <file src="res\go.png" target="images\icon.png" />
   </files>
 </package>

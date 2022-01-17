@@ -4,7 +4,7 @@
   "classifications": ["Common/Console/Go"],
   "name": "Console Go",
   "generatorVersions": "[1.0.0.0-*)",
-  "description": "dot console application",
+  "description": "Console Go provides startup code for console application with dependency injection, logging, configuration and git versioning.",
   "groupIdentity": "go",
   "precedence": "4000",
   "identity": "Console.Go",
