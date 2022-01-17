@@ -2,6 +2,7 @@ name: Build
 
 env:
     DOTNET_CLI_TELEMETRY_OPTOUT: true
+    NUGET_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
     
 on:
   push:
@@ -44,5 +45,8 @@ jobs:
     - name: Pack
       working-directory: .
       run: |
-        nuget pack .nuspec -NoDefaultExcludes -OutputDirectory bin -Version ${{ env.GitVersion_SemVer }}
+        nuget pack .nuspec -NoDefaultExcludes -OutputDirectory bin -Version ${{ env.GitVersion_FullSemVer }}
  
+    - name: Push    
+      run: dotnet nuget push "bin/*.nupkg" -k ${{ secrets.PACKAGES_TOKEN }} -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
+
