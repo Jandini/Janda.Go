@@ -48,5 +48,6 @@ jobs:
         nuget pack .nuspec -NoDefaultExcludes -OutputDirectory bin -Version ${{ env.GitVersion_FullSemVer }}
  
     - name: Push    
+      working-directory: .
       run: dotnet nuget push "bin/*.nupkg" -k ${{ secrets.PACKAGES_TOKEN }} -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
 
