@@ -9,10 +9,6 @@ on:
   pull_request:
     branches: [ main ]
 
-defaults:
-  run:
-    working-directory: src
-
 jobs:
   build:
 
@@ -29,12 +25,11 @@ jobs:
       with:
         dotnet-version: 6.0.x            
 
-    - name: Restore
-      run:
+    - name: Console.Go
+      working-directory: src/Console.Go/src
+      run: |  
         dotnet restore
-
-    - name: Build
-      run: dotnet build --no-restore -nologo -c:Release
+        dotnet build --no-restore -nologo -c:Release
 
     - name: Version
       run: |  
@@ -42,11 +37,8 @@ jobs:
         dotnet gitversion /output buildserver 
         
     - name: Pack
-      working-directory: .
-      run: |
-        nuget pack .nuspec -NoDefaultExcludes -OutputDirectory bin -Version ${{ env.GitVersion_FullSemVer }}
+      run: nuget pack .nuspec -NoDefaultExcludes -OutputDirectory bin -Version ${{ env.GitVersion_FullSemVer }}
  
     - name: Push    
-      working-directory: .
       run: dotnet nuget push "bin/*.nupkg" -k ${{ secrets.PACKAGES_TOKEN }} -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
 

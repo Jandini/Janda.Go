@@ -1,4 +1,4 @@
-﻿namespace Janda.Go
+﻿namespace ConGo
 {
     internal class Settings
     {

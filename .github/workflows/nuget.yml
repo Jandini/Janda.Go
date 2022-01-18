@@ -23,13 +23,11 @@ jobs:
         dotnet-version: 6.0.x
         source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
     
-    - name: Restore
-      working-directory: src
-      run: dotnet restore
-
-    - name: Build
-      working-directory: src
-      run: dotnet build --no-restore -nologo -c:Release
+    - name: Console.Go
+      working-directory: src/Console.Go/src
+      run: |
+        dotnet restore
+        dotnet build --no-restore -nologo -c:Release
 
     - name: Version
       run: |  

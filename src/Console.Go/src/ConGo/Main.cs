@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace Janda.Go
+namespace ConGo
 {
     internal class Main : IMain
     {

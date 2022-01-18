@@ -1,4 +1,4 @@
-﻿using Janda.Go;
+﻿using ConGo;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Serilog;
