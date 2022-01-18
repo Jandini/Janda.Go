@@ -27,9 +27,9 @@ jobs:
 
     - name: Console.Go
       working-directory: src/Console.Go/src
-      run: |
+      run: |  
         dotnet restore
-	dotnet build --no-restore -nologo -c:Release
+        dotnet build --no-restore -nologo -c:Release
 
     - name: Version
       run: |  
