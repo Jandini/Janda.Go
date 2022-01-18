@@ -4,6 +4,8 @@
 
 :: initialize git repository with main branch
 if not exist .git git init --initial-branch=main
+if %errorlevel% neq 0 echo Git version 2.34 or above is required.&goto :eof
+
 :: check if there are any commits
 git log 2>nul 1>nul
 if %errorlevel% equ 0 goto :eof
