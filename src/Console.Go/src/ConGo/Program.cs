@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using System.Reflection;
 using Serilog;
 using ConGo;
 
+
 var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json", true)
+    .AddAppSettings("appsettings.json")
     .Build();
 
 var provider = new ServiceCollection()
@@ -20,15 +19,7 @@ var provider = new ServiceCollection()
             .CreateLogger(), dispose: true))
     .BuildServiceProvider();
 
-var version = Assembly.GetEntryAssembly()?
-    .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
-        .InformationalVersion;
-
 provider
-    .GetRequiredService<ILogger<Program>>()
-    .LogInformation("Running ConGo {version}", version);
-
-provider
+    .LogVersion()
     .GetRequiredService<IMain>()
     .Run();
-    
