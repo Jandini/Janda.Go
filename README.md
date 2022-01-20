@@ -1,6 +1,7 @@
 # Janda.Go
 
 [![.NET](https://github.com/Jandini/Janda.Go/actions/workflows/build.yml/badge.svg)](https://github.com/Jandini/Janda.Go/actions/workflows/build.yml)
+[![NuGet](https://github.com/Jandini/Janda.Go/actions/workflows/nuget.yml/badge.svg)](https://github.com/Jandini/Janda.Go/actions/workflows/nuget.yml)
 
 .NET template to get you going with console application including dependency injection, logging, configuration and git versioning.
 
