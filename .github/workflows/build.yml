@@ -37,9 +37,7 @@ jobs:
         dotnet gitversion /output buildserver 
         
     - name: Pack
-      run: |
-        echo Creating package version env.GitVersion_FullSemVer
-        nuget pack .nuspec -NoDefaultExcludes -OutputDirectory bin -Version ${{ env.GitVersion_FullSemVer }}
+      run: nuget pack .nuspec -NoDefaultExcludes -OutputDirectory bin -Version ${{ env.GitVersion_FullSemVer }}
  
     - name: Push    
       run: dotnet nuget push "bin/*.nupkg" -k ${{ secrets.PACKAGES_TOKEN }} -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
