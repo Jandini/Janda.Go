@@ -7,13 +7,11 @@ using System.Reflection;
 namespace ConGo
 {
     internal static class Extensions
-    {
-        static readonly Assembly _assembly = Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly();
-
-        internal static IConfigurationBuilder AddAppSettings(this IConfigurationBuilder builder, string name)
+    {        
+        internal static IConfigurationBuilder AddAppSettingsJson(this IConfigurationBuilder builder, string name)
         {
             return builder
-                .AddJsonStream(new EmbeddedFileProvider(_assembly, typeof(Program).Namespace ?? _assembly.GetName().Name).GetFileInfo(name).CreateReadStream())
+                .AddJsonStream(new EmbeddedFileProvider(Assembly.GetExecutingAssembly()).GetFileInfo(name).CreateReadStream())
                 .AddJsonFile(name, true);
         }
 
@@ -21,9 +19,22 @@ namespace ConGo
         {
             provider
                 .GetRequiredService<ILogger<Program>>()
-                .LogInformation("ConGo {version}", _assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion);
+                .LogInformation("ConGo {version}", Assembly.GetEntryAssembly()?.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion);
 
             return provider;
+        }      
+
+
+        internal static IServiceCollection AddConfiguration(this IServiceCollection services, IConfiguration configuration)
+        {
+            return services
+                .AddSingleton(configuration)
+                .AddSingleton(configuration.GetRequiredSection("Go").Get<Settings>());
+        }
+
+        internal static IServiceCollection AddServices(this IServiceCollection services)
+        {
+            return services.AddTransient<IMain, Main>();
         }
     }
 }
