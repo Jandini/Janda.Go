@@ -25,8 +25,8 @@ jobs:
       with:
         dotnet-version: 6.0.x            
 
-    - name: Console.Go
-      working-directory: src/Console.Go/src
+    - name: Console
+      working-directory: src/Console/src
       run: |  
         dotnet restore
         dotnet build --no-restore -nologo -c:Release
