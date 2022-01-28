@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace ConGo
+namespace ConsoleGo
 {
     internal class Main : IMain
     {

@@ -4,10 +4,10 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 
-namespace ConGo
+namespace ConsoleGo
 {
     internal static class Extensions
-    {        
+    {
         internal static IConfigurationBuilder AddAppSettingsJson(this IConfigurationBuilder builder, string name)
         {
             return builder
@@ -19,10 +19,10 @@ namespace ConGo
         {
             provider
                 .GetRequiredService<ILogger<Program>>()
-                .LogInformation("ConGo {version}", Assembly.GetEntryAssembly()?.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion);
+                .LogInformation("ConsoleGo {version}", Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion);
 
             return provider;
-        }      
+        }
 
 
         internal static IServiceCollection AddConfiguration(this IServiceCollection services, IConfiguration configuration)

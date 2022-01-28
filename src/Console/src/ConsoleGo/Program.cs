@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Serilog;
-using ConGo;
+using ConsoleGo;
 
 
 var configuration = new ConfigurationBuilder()
