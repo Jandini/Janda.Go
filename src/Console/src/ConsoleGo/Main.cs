@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace ConGo
+namespace ConsoleGo
 {
     internal class Main : IMain
     {
@@ -16,7 +16,6 @@ namespace ConGo
         public void Run()
         {
             _logger.LogInformation(_settings.Message ?? "Message is missing in appsettings.json under Go section.");
-            _logger.LogTrace("hello world");
         }
     }
 }

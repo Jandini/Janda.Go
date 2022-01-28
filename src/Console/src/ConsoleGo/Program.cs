@@ -1,18 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Serilog;
-using ConGo;
+using ConsoleGo;
 
 
 var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
-    .AddAppSettings("appsettings.json")
+    .AddAppSettingsJson("appsettings.json")
     .Build();
 
 var provider = new ServiceCollection()
-    .AddTransient<IMain, Main>()
-    .AddSingleton<IConfiguration>(configuration)
-    .AddSingleton<Settings>(configuration.GetRequiredSection("Go").Get<Settings>())
+    .AddServices()
+    .AddConfiguration(configuration)
     .AddLogging(builder => builder
         .AddSerilog(new LoggerConfiguration()
             .ReadFrom.Configuration(configuration)

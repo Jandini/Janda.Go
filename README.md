@@ -20,13 +20,13 @@ dotnet new -i Janda.Go
 Create new application from **Console Go (C#)** template
 
 ```bash
-dotnet new congo 
+dotnet new consolego 
 ```
 
 or 
 
 ```bash
-dotnet new congo -n MyApp
+dotnet new consolego -n MyApp
 ```
 
 
@@ -36,7 +36,7 @@ dotnet new congo -n MyApp
 More information about **Console Go** template 
 
 ```
-dotnet new congo -h  
+dotnet new consolego -h  
 ```
 
 

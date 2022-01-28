@@ -8,12 +8,12 @@
   "groupIdentity": "go",
   "precedence": "4000",
   "identity": "Console.Go",
-  "shortName": "congo",
+  "shortName": "consolego",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "ConGo",
+  "sourceName": "ConsoleGo",
   "preferNameDirectory": true,
   "sources": [
     {
@@ -32,7 +32,7 @@
   "symbols": {
     "sourceName": {
       "type": "parameter",
-      "replaces": "ConGo"
+      "replaces": "ConsoleGo"
     }
   }
 }

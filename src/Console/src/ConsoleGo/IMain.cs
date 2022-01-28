@@ -1,4 +1,4 @@
-﻿namespace ConGo
+﻿namespace ConsoleGo
 {
     internal interface IMain
     {
