@@ -1,0 +1,15 @@
+{
+    "profiles": {
+        "ConsoleGo": {
+            "commandName": "Project"
+        },
+        "Help": {
+            "commandName": "Project",
+            "commandLineArgs": "--help"
+        },
+        "Go": {
+            "commandName": "Project",
+            "commandLineArgs": "go -n Example"
+        }
+    }
+}
