@@ -3,7 +3,6 @@
     internal interface IMain
     {
         void Run();
-
-        void Run(string name);
+        void Go(string name);
     }
 }

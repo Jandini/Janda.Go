@@ -18,7 +18,7 @@ namespace ConsoleGo
             _logger.LogInformation(_settings.Message ?? "Message is missing in appsettings.json under Go section.");
         }
 
-        public void Run(string name)
+        public void Go(string name)
         {
             _logger.LogInformation("Creating {name} directory in {path}", name, Directory.GetCurrentDirectory());
             Directory.CreateDirectory(name);

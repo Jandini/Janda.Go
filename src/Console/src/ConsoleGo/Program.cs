@@ -37,7 +37,7 @@ try
                         break;
 
                     case Options.Go options:
-                        main.Run(options.Name);
+                        main.Go(options.Name);
                         break;
 
                 };
@@ -47,7 +47,6 @@ try
                 provider.GetService<ILogger<Program>>()?
                     .LogCritical(ex, ex.Message);
             }
-
         });
 }
 catch (Exception ex)
