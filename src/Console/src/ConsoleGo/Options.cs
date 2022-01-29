@@ -16,7 +16,7 @@ namespace ConsoleGo
         internal class Go
         {
             [Option('n', "name", HelpText = "Directory name.", Required = true)]
-            public string? Name { get; set; }
+            public string Name { get; set; }
         }
 
     }
