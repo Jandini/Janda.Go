@@ -9,11 +9,11 @@ namespace ConsoleGo
         readonly ILoggerFactory _loggerFactory;
         readonly Settings _settings;
 
-        public Main(ILogger<Main> logger, Settings settings, ILoggerFactory loggerFactory)
+        public Main(ILogger<Main> logger, ILoggerFactory loggerFactory, Settings settings)
         {
             _logger = logger;
-            _settings = settings;
             _loggerFactory = loggerFactory;
+            _settings = settings;
         }
 
         public void Run()
