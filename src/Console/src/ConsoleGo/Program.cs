@@ -1,5 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-#if (all)
+﻿// Created with Janda.Go http://github.com/Jandini/Janda.Go
+using Microsoft.Extensions.DependencyInjection;
+#if (allFeatures)
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using CommandLine;
@@ -7,7 +8,7 @@ using CommandLine;
 using Serilog;
 using ConsoleGo;
 
-#if (all)
+#if (allFeatures)
 try
 {
     Parser.Default.ParseArguments<Options.Say, Options.Go>(args)

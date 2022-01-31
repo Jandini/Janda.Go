@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-#if (all)
+#if (allFeatures)
 using Serilog;
 #endif
 
@@ -8,19 +8,19 @@ namespace ConsoleGo
     internal class Main : IMain
     {
         readonly ILogger<Main> _logger;
-#if (all)
+#if (allFeatures)
         readonly ILoggerFactory _loggerFactory;
         readonly Settings _settings;
 #endif
 
-#if (all)
+#if (allFeatures)
         public Main(ILogger<Main> logger, ILoggerFactory loggerFactory, Settings settings)
 #else
         public Main(ILogger<Main> logger)
 #endif
         {
             _logger = logger;
-#if (all)
+#if (allFeatures)
             _loggerFactory = loggerFactory;
             _settings = settings;
 #endif
@@ -28,13 +28,13 @@ namespace ConsoleGo
 
         public void Run()
         {
-#if (all)
+#if (allFeatures)
             _logger.LogInformation(_settings.Message ?? "Message is missing in appsettings.json under Go section.");
 #else
             _logger.LogInformation("Hello, World");
 #endif
         }
-#if (all)
+#if (allFeatures)
         public void Go(string name)
         {            
             using var logger = _loggerFactory
