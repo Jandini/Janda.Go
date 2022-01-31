@@ -25,6 +25,15 @@
             "/**/obj/**",
             ".nuspec"
           ]
+        },
+        {
+          "condition": "(!all)",
+          "exclude": [
+            "**/appsettings.json",
+            "**/Extensions.cs",
+            "**/Options.cs",
+            "**/Settings.cs"
+          ]
         }
       ]
     }
@@ -33,6 +42,11 @@
     "sourceName": {
       "type": "parameter",
       "replaces": "ConsoleGo"
+    },
+    "all": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false"
     }
   }
 }
