@@ -3,7 +3,7 @@
 [![.NET](https://github.com/Jandini/Janda.Go/actions/workflows/build.yml/badge.svg)](https://github.com/Jandini/Janda.Go/actions/workflows/build.yml)
 [![NuGet](https://github.com/Jandini/Janda.Go/actions/workflows/nuget.yml/badge.svg)](https://github.com/Jandini/Janda.Go/actions/workflows/nuget.yml)
 
-.NET template to get you going with console application including dependency injection, logging, configuration and git versioning.
+.NET template to create console application including dependency injection, logging, configuration.
 
 
 
@@ -38,6 +38,36 @@ More information about **Console Go** template
 ```
 dotnet new consolego -h  
 ```
+
+
+
+
+
+## Features
+
+* .NET6 with https://aka.ms/new-console-template 
+* Repository Layout
+  * The `src` and `bin` folders 
+  * Default `README.md` file 
+  * Default `.gitignore` file
+  * Default `launchSettings.json` file
+* GitHub Actions
+  * `Build` and `Test` workflow file for .NET6
+* Dependency Injection
+  * Main service with logging
+* Logging
+  * `Microsoft` or `Serilog` logging providers
+  * Logger factory disposal
+  * Unhandled exceptions logging
+  * Version logging
+  * Dynamic logger
+* Configuration
+  * Embedded `appsettings.json`  file
+  * Override embedded `appsettings.json` with the file
+  * Settings binding
+  * Configuration and settings injection
+* Command line parser
+  * Verbs and options parser
 
 
 
