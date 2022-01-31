@@ -73,6 +73,110 @@ dotnet new consolego -h
 
 
 
+## Examples
+
+### Simple Console
+
+```
+dotnet new -n Example
+```
+
+###### Example.csproj
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<BaseOutputPath>..\..\bin</BaseOutputPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+	</ItemGroup>
+</Project>
+```
+
+
+
+###### Program.cs
+
+```c#
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Example;
+
+var provider = new ServiceCollection()
+    .AddTransient<IMain, Main>()
+    .AddLogging(builder => builder.AddConsole())
+    .BuildServiceProvider();
+
+try
+{
+    provider
+        .GetRequiredService<IMain>()
+        .Run();
+}
+catch (Exception ex)
+{
+    provider.GetRequiredService<ILogger<Program>>()
+        .LogCritical(ex, ex.Message);
+}
+finally
+{
+    provider.GetRequiredService<ILoggerFactory>()
+        .Dispose();
+}
+```
+
+
+
+###### IMain.cs
+
+```c#
+namespace Example
+{
+    internal interface IMain
+    {
+        void Run();
+    }
+}
+```
+
+
+
+###### Main.cs
+
+```c#
+using Microsoft.Extensions.Logging;
+
+namespace Example
+{
+    internal class Main : IMain
+    {
+        readonly ILogger<Main> _logger;
+
+        public Main(ILogger<Main> logger)
+        {
+            _logger = logger;
+        }
+
+        public void Run()
+        {
+            _logger.LogInformation("Hello, World");            
+            throw new NotImplementedException();
+        }
+    }
+}
+```
+
+
+
+
+
 ### Resources
 
 Go icon was downloaded from [Flaticon](https://www.flaticon.com/premium-icon/go_2813814?term=go&related_id=2813814).
