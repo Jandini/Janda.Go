@@ -27,12 +27,14 @@
           ]
         },
         {
-          "condition": "(!all)",
+          "condition": "(!allFeatures)",
           "exclude": [
-            "**/appsettings.json",
-            "**/Extensions.cs",
-            "**/Options.cs",
-            "**/Settings.cs"
+            ".github/**/*",
+            "src/ConsoleGo/appsettings.json",
+            "src/ConsoleGo/Extensions.cs",
+            "src/ConsoleGo/Options.cs",
+            "src/ConsoleGo/Settings.cs",
+            "src/ConsoleGo/Properties/*"
           ]
         }
       ]
@@ -41,12 +43,14 @@
   "symbols": {
     "sourceName": {
       "type": "parameter",
-      "replaces": "ConsoleGo"
+      "replaces": "ConsoleGo",
+      "description": "Project name"
     },
-    "all": {
+    "allFeatures": {
       "type": "parameter",
       "datatype": "bool",
-      "defaultValue": "false"
+      "defaultValue": "false",
+      "description": "Add all features"
     }
   }
 }
