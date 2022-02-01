@@ -80,7 +80,7 @@ try
         provider.GetRequiredService<ILogger<Program>>()
             .LogCritical(ex, ex.Message);
     }
-#if (!useSerlog)
+#if (!useSerilog)
     finally
     {
         provider.GetRequiredService<ILoggerFactory>()
