@@ -51,6 +51,12 @@
       "datatype": "bool",
       "defaultValue": "false",
       "description": "Add all features"
+    },
+    "useSerilog": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Use Serilog"
     }
   }
 }
