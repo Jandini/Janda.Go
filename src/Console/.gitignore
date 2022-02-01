@@ -348,7 +348,3 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-
-# Exclude Janda.Go windows batch scripts
-.git.bat
-.publish.bat

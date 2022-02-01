@@ -25,6 +25,17 @@
             "/**/obj/**",
             ".nuspec"
           ]
+        },
+        {
+          "condition": "(!allFeatures)",
+          "exclude": [
+            ".github/**/*",
+            "src/ConsoleGo/appsettings.json",
+            "src/ConsoleGo/Extensions.cs",
+            "src/ConsoleGo/Options.cs",
+            "src/ConsoleGo/Settings.cs",
+            "src/ConsoleGo/Properties/*"
+          ]
         }
       ]
     }
@@ -32,7 +43,14 @@
   "symbols": {
     "sourceName": {
       "type": "parameter",
-      "replaces": "ConsoleGo"
+      "replaces": "ConsoleGo",
+      "description": "Project name"
+    },
+    "allFeatures": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Add all features"
     }
   }
 }
