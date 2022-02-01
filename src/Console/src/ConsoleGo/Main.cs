@@ -39,7 +39,7 @@ namespace ConsoleGo
 #if (allFeatures)
         public void Go(string name)
         {            
-            _logger.LogInformation("Adding new file logger")
+            _logger.LogInformation("Adding file logger");
 
             _loggerFactory
               .AddSerilog(new LoggerConfiguration()
@@ -49,9 +49,7 @@ namespace ConsoleGo
             _logger.LogWarning("New logger was added")
             _logger.LogInformation("Creating {name} directory in {path}", name, Directory.GetCurrentDirectory());
             var info = Directory.CreateDirectory(name);
-            _logger.LogInformation("Directory {name} created successfully", info.FullName);
-            
-            throw new NotImplementedException();
+            _logger.LogInformation("Directory {name} created successfully", info.FullName);            
         }
 #endif
     }
