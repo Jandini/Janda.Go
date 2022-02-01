@@ -1,11 +1,13 @@
 ﻿// Created with Janda.Go http://github.com/Jandini/Janda.Go
 using Microsoft.Extensions.DependencyInjection;
-#if (allFeatures)
 using Microsoft.Extensions.Logging;
+#if (allFeatures)
 using Microsoft.Extensions.Configuration;
 using CommandLine;
 #endif
+#if (useSerilog || allFeatures)
 using Serilog;
+#endif
 using ConsoleGo;
 
 #if (allFeatures)
@@ -52,21 +54,42 @@ try
                     .LogCritical(ex, ex.Message);
             }
         });
+#else
+try
+{
+    var provider = new ServiceCollection()
+        .AddTransient<IMain, Main>()
+#if (useSerilog)
+        .AddLogging(builder => builder
+            .AddSerilog(new LoggerConfiguration()
+                .WriteTo.Console()
+                .CreateLogger(), dispose: true))
+#else
+        .AddLogging(builder => builder.AddConsole())
+#endif
+        .BuildServiceProvider();
+
+    try
+    {
+        provider
+            .GetRequiredService<IMain>()
+            .Run();
+    }
+    catch (Exception ex)
+    {
+        provider.GetRequiredService<ILogger<Program>>()
+            .LogCritical(ex, ex.Message);
+    }
+#if (!useSerlog)
+    finally
+    {
+        provider.GetRequiredService<ILoggerFactory>()
+            .Dispose();
+    }
+#endif
+#endif
 }
 catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
-#else
-var provider = new ServiceCollection()
-    .AddTransient<IMain, Main>()
-    .AddLogging(builder => builder
-        .AddSerilog(new LoggerConfiguration()
-            .WriteTo.Console()
-            .CreateLogger(), dispose: true))
-    .BuildServiceProvider();
-
-provider
-    .GetRequiredService<IMain>()
-    .Run();
-#endif

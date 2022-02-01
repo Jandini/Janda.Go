@@ -32,19 +32,24 @@ namespace ConsoleGo
             _logger.LogInformation(_settings.Message ?? "Message is missing in appsettings.json under Go section.");
 #else
             _logger.LogInformation("Hello, World");
+            _logger.LogWarning("No implementation");
+            throw new NotImplementedException("Fix it");
 #endif
         }
 #if (allFeatures)
         public void Go(string name)
         {            
-            using var logger = _loggerFactory
+            _logger.LogInformation("Adding file logger");
+
+            _loggerFactory
               .AddSerilog(new LoggerConfiguration()
               .WriteTo.File(Path.ChangeExtension(Path.Combine(name, name), "log"))
               .CreateLogger(), dispose: true);
             
+            _logger.LogWarning("New logger was added")
             _logger.LogInformation("Creating {name} directory in {path}", name, Directory.GetCurrentDirectory());
             var info = Directory.CreateDirectory(name);
-            _logger.LogInformation("Directory {name} created successfully", info.FullName);
+            _logger.LogInformation("Directory {name} created successfully", info.FullName);            
         }
 #endif
     }
