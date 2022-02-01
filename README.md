@@ -29,6 +29,68 @@ or
 dotnet new consolego -n MyApp
 ```
 
+The console main code is ready to "Run"
+
+```c#
+public void Run()
+{
+    _logger.LogInformation("Hello, World");
+    _logger.LogWarning("No implementation");
+    throw new NotImplementedException("Fix it");
+}
+```	
+
+![image](https://user-images.githubusercontent.com/19593367/152032611-382ae24e-23f2-4117-ae6b-cdf358ac3e00.png)
+
+The `Program.cs` code is going to look like this
+
+```C#
+// Created with Janda.Go http://github.com/Jandini/Janda.Go
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using MyApp;
+
+try
+{
+    var provider = new ServiceCollection()
+        .AddTransient<IMain, Main>()
+        .AddLogging(builder => builder.AddConsole())
+        .BuildServiceProvider();
+
+    try
+    {
+        provider
+            .GetRequiredService<IMain>()
+            .Run();
+    }
+    catch (Exception ex)
+    {
+        provider.GetRequiredService<ILogger<Program>>()
+            .LogCritical(ex, ex.Message);
+    }
+    finally
+    {
+        provider.GetRequiredService<ILoggerFactory>()
+            .Dispose();
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+```
+
+### Serilog
+
+If you like Serilog the same as I do use `--useSerilog` or `-us` option
+
+```
+dotnet new consolego -n MyApp -us
+```
+
+![image](https://user-images.githubusercontent.com/19593367/152033659-27d21c1a-293e-4e97-8282-2747f07f804f.png)
+
+
 
 
 ## Help
