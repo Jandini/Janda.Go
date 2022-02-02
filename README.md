@@ -3,8 +3,7 @@
 [![.NET](https://github.com/Jandini/Janda.Go/actions/workflows/build.yml/badge.svg)](https://github.com/Jandini/Janda.Go/actions/workflows/build.yml)
 [![NuGet](https://github.com/Jandini/Janda.Go/actions/workflows/nuget.yml/badge.svg)](https://github.com/Jandini/Janda.Go/actions/workflows/nuget.yml)
 
-.NET template to create console application including dependency injection, logging, configuration.
-
+.NET template provides console application startup code with dependency injection, logging, configuration and more...
 
 
 ## Install
