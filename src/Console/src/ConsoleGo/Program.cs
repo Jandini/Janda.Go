@@ -21,7 +21,7 @@ try
                 .AddAppSettingsJson("appsettings.json")
                 .Build();
 
-            var provider = new ServiceCollection()
+            using var provider = new ServiceCollection()
                 .AddServices()
                 .AddConfiguration(configuration)
                 .AddLogging(builder => builder
@@ -80,13 +80,6 @@ try
         provider.GetRequiredService<ILogger<Program>>()
             .LogCritical(ex, ex.Message);
     }
-#if (!useSerilog)
-    finally
-    {
-        provider.GetRequiredService<ILoggerFactory>()
-            .Dispose();
-    }
-#endif
 #endif
 }
 catch (Exception ex)
