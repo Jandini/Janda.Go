@@ -57,7 +57,7 @@ try
 #else
 try
 {
-    var provider = new ServiceCollection()
+    using var provider = new ServiceCollection()
         .AddTransient<IMain, Main>()
 #if (useSerilog)
         .AddLogging(builder => builder
