@@ -8,6 +8,8 @@
 
 ## Install
 
+To install this template use `dotnet` command. It will automatically download template nuget package from https://www.nuget.org/packages/Janda.Go/
+
 ```bash
 dotnet new -i Janda.Go
 ```
@@ -16,7 +18,7 @@ dotnet new -i Janda.Go
 
 ## Start
 
-Create new application from **Console Go (C#)** template
+Once the template is installed you can create new application from **Console Go (C#)** template. 
 
 ```bash
 dotnet new consolego 
@@ -28,7 +30,7 @@ or
 dotnet new consolego -n MyApp
 ```
 
-The console main code is ready to "Run"
+The console main code is ready to "Run" with dependency injection and logging.
 
 ```c#
 public void Run()
