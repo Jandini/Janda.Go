@@ -47,11 +47,11 @@ The `Program.cs` code is going to look like this
 // Created with Janda.Go http://github.com/Jandini/Janda.Go
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using MyApp;
+using Hello1;
 
 try
 {
-    var provider = new ServiceCollection()
+    using var provider = new ServiceCollection()
         .AddTransient<IMain, Main>()
         .AddLogging(builder => builder.AddConsole())
         .BuildServiceProvider();
@@ -66,11 +66,6 @@ try
     {
         provider.GetRequiredService<ILogger<Program>>()
             .LogCritical(ex, ex.Message);
-    }
-    finally
-    {
-        provider.GetRequiredService<ILoggerFactory>()
-            .Dispose();
     }
 }
 catch (Exception ex)
@@ -132,107 +127,6 @@ dotnet new consolego -h
 
 
 
-
-
-## Examples
-
-### Simple Console
-
-```
-dotnet new -n Example
-```
-
-###### Example.csproj
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<OutputType>Exe</OutputType>
-		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>disable</Nullable>
-		<BaseOutputPath>..\..\bin</BaseOutputPath>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
-	</ItemGroup>
-</Project>
-```
-
-
-
-###### Program.cs
-
-```c#
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Example;
-
-var provider = new ServiceCollection()
-    .AddTransient<IMain, Main>()
-    .AddLogging(builder => builder.AddConsole())
-    .BuildServiceProvider();
-
-try
-{
-    provider
-        .GetRequiredService<IMain>()
-        .Run();
-}
-catch (Exception ex)
-{
-    provider.GetRequiredService<ILogger<Program>>()
-        .LogCritical(ex, ex.Message);
-}
-finally
-{
-    provider.GetRequiredService<ILoggerFactory>()
-        .Dispose();
-}
-```
-
-
-
-###### IMain.cs
-
-```c#
-namespace Example
-{
-    internal interface IMain
-    {
-        void Run();
-    }
-}
-```
-
-
-
-###### Main.cs
-
-```c#
-using Microsoft.Extensions.Logging;
-
-namespace Example
-{
-    internal class Main : IMain
-    {
-        readonly ILogger<Main> _logger;
-
-        public Main(ILogger<Main> logger)
-        {
-            _logger = logger;
-        }
-
-        public void Run()
-        {
-            _logger.LogInformation("Hello, World");            
-            throw new NotImplementedException();
-        }
-    }
-}
-```
 
 
 
