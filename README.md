@@ -103,7 +103,7 @@ dotnet new consolego -h
 
 ## Features
 
-* .NET6 with https://aka.ms/new-console-template 
+* .NET6
 * Repository Layout
   * The `src` and `bin` folders 
   * Default `README.md` file 
@@ -113,9 +113,9 @@ dotnet new consolego -h
   * `Build` and `Test` workflow file for .NET6
 * Dependency Injection
   * Main service with logging
+  * Service provider disposal
 * Logging
-  * `Microsoft` or `Serilog` logging providers
-  * Logger factory disposal
+  * `Microsoft` or `Serilog` log providers  
   * Unhandled exceptions logging
   * Version logging
   * Dynamic logger
