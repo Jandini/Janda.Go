@@ -1,16 +1,19 @@
 ﻿using Microsoft.Extensions.Logging;
 #if (allFeatures)
+using System.IO;
 using Serilog;
+#else 
+using System;
 #endif
 
 namespace ConsoleGo
 {
     internal class Main : IMain
     {
-        readonly ILogger<Main> _logger;
+        private readonly ILogger<Main> _logger;
 #if (allFeatures)
-        readonly ILoggerFactory _loggerFactory;
-        readonly Settings _settings;
+        private readonly ILoggerFactory _loggerFactory;
+        private readonly Settings _settings;
 #endif
 
 #if (allFeatures)
