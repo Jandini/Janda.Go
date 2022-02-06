@@ -8,7 +8,7 @@
 
 ## Install
 
-To install this template use `dotnet` command. It will automatically download template nuget package from https://www.nuget.org/packages/Janda.Go/
+To install this template use `dotnet` command. It will automatically download template nuget package from https://www.nuget.org/packages/Janda.Go
 
 ```bash
 dotnet new -i Janda.Go
@@ -49,30 +49,39 @@ The `Program.cs` code is going to look like this
 // Created with Janda.Go http://github.com/Jandini/Janda.Go
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Hello1;
+using System;
 
-try
+namespace MyApp
 {
-    using var provider = new ServiceCollection()
-        .AddTransient<IMain, Main>()
-        .AddLogging(builder => builder.AddConsole())
-        .BuildServiceProvider();
+    class Program
+    {
+        static void Main()
+        {
+            try
+            {
+                using var provider = new ServiceCollection()
+                    .AddTransient<IMain, Main>()
+                    .AddLogging(builder => builder.AddConsole())
+                    .BuildServiceProvider();
 
-    try
-    {
-        provider
-            .GetRequiredService<IMain>()
-            .Run();
+                try
+                {
+                    provider
+                        .GetRequiredService<IMain>()
+                        .Run();
+                }
+                catch (Exception ex)
+                {
+                    provider.GetRequiredService<ILogger<Program>>()
+                        .LogCritical(ex, ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
-    catch (Exception ex)
-    {
-        provider.GetRequiredService<ILogger<Program>>()
-            .LogCritical(ex, ex.Message);
-    }
-}
-catch (Exception ex)
-{
-    Console.WriteLine(ex.Message);
 }
 ```
 
