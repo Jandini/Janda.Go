@@ -41,16 +41,15 @@
     }
   ],
   "symbols": {
-    "sourceName": {
+    "name": {
       "type": "parameter",
       "replaces": "ConsoleGo",
-      "description": "Project name"
     },
     "allFeatures": {
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false",
-      "description": "Add all features"
+      "description": "Add all features including Serilog"
     },
     "useSerilog": {
       "type": "parameter",
