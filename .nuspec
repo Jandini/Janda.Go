@@ -9,7 +9,7 @@
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>dotnet template janda go</tags>
-    <description>Provides startup code for application with dependency injection, logging, configuration and git versioning. 
+    <description>Provides solution template for console application with dependency injection, logging, and configuration. 
 Run dotnet new -i Janda.Go to install the templates.</description>
     <projectUrl>https://github.com/Jandini/Janda.Go</projectUrl>
     <repository type="git" url="https://github.com/Jandini/Janda.Go" />
