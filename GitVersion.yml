@@ -1,0 +1,9 @@
+# use SemVer instead default full informational
+assembly-informational-format: '{SemVer}'
+continuous-delivery-fallback-tag: main
+
+branches:
+  master:
+    regex: main
+    mode: ContinuousDeployment
+
