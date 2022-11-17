@@ -14,6 +14,11 @@ To install this template use `dotnet` command. It will automatically download te
 dotnet new install Janda.Go
 ```
 
+in earlier dotnet versions it was 
+```bash
+dotnet new -i Janda.Go
+```
+
 
 
 ## Start
