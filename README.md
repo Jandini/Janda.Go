@@ -11,7 +11,7 @@
 To install this template use `dotnet` command. It will automatically download template nuget package from https://www.nuget.org/packages/Janda.Go
 
 ```bash
-dotnet new -i Janda.Go
+dotnet new install Janda.Go
 ```
 
 
