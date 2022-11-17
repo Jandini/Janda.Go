@@ -19,6 +19,16 @@ in earlier dotnet versions it was
 dotnet new -i Janda.Go
 ```
 
+## Troubleshooting
+
+Under dotnet version 7.0.100 creating new template fails: 
+
+```
+Template "Console Go" could not be created.
+Failed to create template.
+Details: Sequence contains no matching element
+```
+
 
 
 ## Start
