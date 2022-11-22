@@ -17,20 +17,15 @@
   "preferNameDirectory": true,
   "constraints": {
     "sdk-only": {
-      "type": "host",
-      "args": [
-        {
-          "hostname": "dotnetcli",
-          "version": "6.0.*"
-        },
-        {
-          "hostname": "dotnetcli",
-          "version": "7.0.*"
-        }
-      ]
-   }
+       "type": "host",
+       "args": [
+         {
+             "hostname": "dotnetcli"
+         }
+       ]
+    }
   },
-  "sources": [
+   "sources": [
     {
       "modifiers": [
         {
