@@ -15,16 +15,6 @@
   },
   "sourceName": "ConsoleGo",
   "preferNameDirectory": true,
-  "constraints": {
-    "sdk-only": {
-       "type": "host",
-       "args": [
-         {
-             "hostname": "dotnetcli"
-         }
-       ]
-    }
-  },
    "sources": [
     {
       "modifiers": [
