@@ -15,6 +15,12 @@
   },
   "sourceName": "ConsoleGo",
   "preferNameDirectory": true,
+  "constraints": {
+     "CSharp": {
+        "type": "project-capability",
+        "args": "CSharp"
+     }
+  },
   "sources": [
     {
       "modifiers": [
