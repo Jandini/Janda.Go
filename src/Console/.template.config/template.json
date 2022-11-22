@@ -20,12 +20,12 @@
       "type": "host",
       "args": [
         {
-            "hostname": "dotnetcli",
-            "version": "[6.0,)"
+          "hostname": "dotnetcli",
+          "version": "6.0.*"
         },
         {
           "hostname": "dotnetcli",
-          "version": "[7.0,)"
+          "version": "7.0.*"
         }
       ]
    }
