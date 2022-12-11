@@ -15,12 +15,6 @@
   },
   "sourceName": "ConsoleGo",
   "preferNameDirectory": true,
-  "constraints": {
-     "CSharp": {
-        "type": "project-capability",
-        "args": "CSharp"
-     }
-  },
   "sources": [
     {
       "modifiers": [
@@ -47,7 +41,7 @@
     }
   ],
   "symbols": {
-    "name": {
+    "sourceName": {
       "type": "parameter",
       "replaces": "ConsoleGo",
     },
