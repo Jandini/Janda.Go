@@ -5,6 +5,7 @@
 
 .NET template provides console application startup code with dependency injection, logging, configuration and more...
 
+![JandaGo](https://user-images.githubusercontent.com/19593367/211174559-b45486cd-20d8-49fe-839d-7d7a50d6395d.gif)
 
 ## Install
 
@@ -18,17 +19,6 @@ in earlier dotnet versions it was
 ```bash
 dotnet new -i Janda.Go
 ```
-
-## Troubleshooting
-
-Under dotnet version 7.0.100 creating new template fails: 
-
-```
-Template "Console Go" could not be created.
-Failed to create template.
-Details: Sequence contains no matching element
-```
-
 
 
 ## Start
