@@ -1,3 +1,6 @@
+> This repository is not maintained anymore. I have moved to a new repository, less confusing with golang :) 
+> Try [JandaBox](https://github.com/Jandini/JandaBox)
+
 # Janda.Go
 
 [![.NET](https://github.com/Jandini/Janda.Go/actions/workflows/build.yml/badge.svg)](https://github.com/Jandini/Janda.Go/actions/workflows/build.yml)
